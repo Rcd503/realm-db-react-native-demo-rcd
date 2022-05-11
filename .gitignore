@@ -1,0 +1,6 @@
+ios/Pods
+# src/
+__tests__
+yarn.lock
+ios/Podfile.lock
+yarn-error.log
