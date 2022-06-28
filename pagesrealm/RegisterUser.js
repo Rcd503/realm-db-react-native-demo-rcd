@@ -20,9 +20,7 @@ var db = openDatabase({name: 'UserDatabase.db'});
 const RegisterUser = ({navigation}) => {
   let [userName, setUserName] = useState('');
   let [userContact, setUserContact] = useState('');
-//   let [userAddress, setUserAddress] = useState('');
   let [userEmail, setUserEmail] = useState('');
-  //   let [userDob, setUserDob] = useState('');
   const [date, setDate] = React.useState(new Date());
   const [open, setOpen] = React.useState(false);
 
@@ -107,7 +105,6 @@ const RegisterUser = ({navigation}) => {
                   Select Date : {dateFormatter(date)}
                 </Text>
               </TouchableOpacity>
-              {/* <Button title="Open" onPress={() => setOpen(true)} /> */}
               <DatePicker
                 modal
                 mode="date"
@@ -121,14 +118,6 @@ const RegisterUser = ({navigation}) => {
                   setOpen(false);
                 }}
               />
-              {/* <Mytextinput
-                placeholder="Enter Address"
-                onChangeText={userAddress => setUserAddress(userAddress)}
-                maxLength={225}
-                numberOfLines={5}
-                multiline={true}
-                style={{textAlignVertical: 'top', padding: 10}}
-              /> */}
               <Mybutton title="Submit" customClick={register_user} />
             </KeyboardAvoidingView>
           </ScrollView>
@@ -159,8 +148,6 @@ export default RegisterUser;
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginHorizontal: 15,
   },
   textView: {
@@ -186,9 +173,6 @@ const styles = StyleSheet.create({
   datePikerBtnTxt: {
     color: '#007FFF',
     fontSize: 17,
-    // marginTop: 16,
-    // marginLeft: 35,
-    // marginRight: 35,
     textAlignVertical: 'top',
     padding: 10,
   },
