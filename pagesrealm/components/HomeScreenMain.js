@@ -17,9 +17,7 @@ import Realm from 'realm';
 const HomeScreenMain = props => {
   let [userName, setUserName] = useState('');
   let [userContact, setUserContact] = useState('');
-  //   let [userAddress, setUserAddress] = useState('');
   let [userEmail, setUserEmail] = useState('');
-  //   let [userDob, setUserDob] = useState('');
   const [date, setDate] = React.useState(new Date());
   const [open, setOpen] = React.useState(false);
 
@@ -34,15 +32,9 @@ const HomeScreenMain = props => {
       _id: 'int',
       name: 'string',
       email: 'string'
-      // contact: 'string',
     },
     primaryKey: '_id',
   };
-
-  // let realm = new Realm.open({
-  //   // path: 'myrealm',
-  //   schema: [TaskSchema],
-  // });
 
   useEffect(() => {
 
@@ -53,43 +45,14 @@ const HomeScreenMain = props => {
     }).then(realm => { // here is realm
      console.log('realm1', realm);
 
-    //  realm.write(() => {
-    //   console.log('realm1 writeeeee');
-    //   task1 = realm.create('Task', {
-    //     _id: 1,
-    //     name: 'go grocery shopping',
-    //     email: 'Open j',
-    //   });
-    //   task2 = realm.create('Task', {
-    //     _id: 2,
-    //     name: 'go exercise',
-    //     email: 'Open ii',
-    //   });
-    //   console.log("created two tasks: ${task1.name}", task2.name);
-    // });
-    // const tasks = realm.objects("Task");
     const myTask = realm.objectForPrimaryKey("Task", 1); // search for a realm object with a primary key that is an int.
 
     console.log("created two tasks:", myTask.name);
     realm.close();
-    //  this.setState({ realm });  // set it to state
     });
     }, []);
 
   const register_user = () => {
-    
-    // let realm = new Realm({ path: 'myrealm' })
-  
-    
-    
-    // realm.write(() => {
-    //   task1 = realm.create('Task', {
-    //     _id: 1,
-    //     name: userName,
-    //     email: userEmail,
-    //     contact: userContact,
-    //   });
-    // });
     console.log(`created two tasks: ${task1.name} `);
     realm.close();
   };
@@ -142,14 +105,6 @@ const HomeScreenMain = props => {
                 setOpen(false);
               }}
             />
-            {/* <Mytextinput
-                placeholder="Enter Address"
-                onChangeText={userAddress => setUserAddress(userAddress)}
-                maxLength={225}
-                numberOfLines={5}
-                multiline={true}
-                style={{textAlignVertical: 'top', padding: 10}}
-              /> */}
             <Mybutton title="Submit" customClick={register_user} />
           </KeyboardAvoidingView>
         </ScrollView>
@@ -163,8 +118,6 @@ export default HomeScreenMain;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   textView: {
     marginBottom: 20,
@@ -189,22 +142,8 @@ const styles = StyleSheet.create({
   datePikerBtnTxt: {
     color: '#007FFF',
     fontSize: 17,
-    // marginTop: 16,
-    // marginLeft: 35,
-    // marginRight: 35,
     textAlignVertical: 'top',
     padding: 10,
   },
 });
 
-{
-  /* <Button
-        title="Goto AppRealmPage "
-        onPress={() => props.navigation.navigate('AppRealmPage')}></Button> 
-      
-      
-      <Button
-        title="Goto AppSqlitePage "
-        onPress={() => props.navigation.navigate('AppSqlitePage')}></Button>
-      */
-}
