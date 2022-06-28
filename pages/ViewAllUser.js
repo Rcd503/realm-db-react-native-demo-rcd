@@ -9,9 +9,6 @@ import {
   Alert,
   StatusBar,
 } from 'react-native';
-// import {openDatabase} from 'react-native-sqlite-storage';
-// import HomeHeader from '../src/component/HomeHeader';
-// import Mybutton from './components/Mybutton';
 import Mytextinput from './components/Mytextinput';
 import {useFocusEffect} from '@react-navigation/native';
 import Realm from 'realm';
@@ -35,16 +32,7 @@ const ViewAllUser = ({navigation}) => {
   let [flatListItems2, setFlatListItems2] = useState([]);
   let [delSuccessful, setDelSuccessful] = useState(true);
   let [searchText, setSearchText] = useState();
-  // function formatDate(date) {
-  //   return [
-  //     padTo2Digits(date.getDate()),
-  //     padTo2Digits(date.getMonth() + 1),
-  //     date.getFullYear(),
-  //   ].join('/');
-  // }
-  // function padTo2Digits(num) {
-  //   return num.toString().padStart(2, '0');
-  // }
+ 
   useEffect(() => {
     console.log(`useEffect run HomeScreenMain`);
     let task1, task2;
@@ -55,7 +43,6 @@ const ViewAllUser = ({navigation}) => {
       // here is realm
       console.log('realm1', realm);
       const tasks = realm.objects('user_details');
-      // const myTask = realm.objectForPrimaryKey("Task", 1); // search for a realm object with a primary key that is an int.
       console.log('created two tasks:', tasks);
       const data = tasks.map(post => ({
         user_id: post.user_id,
@@ -67,7 +54,6 @@ const ViewAllUser = ({navigation}) => {
       setFlatListItems(data);
       setFlatListItems2(data);
       realm.close();
-      //  this.setState({ realm });  // set it to state
     });
   }, []);
   useEffect(() => {
@@ -80,7 +66,6 @@ const ViewAllUser = ({navigation}) => {
       // here is realm
       console.log('realm1', realm);
       const tasks = realm.objects('user_details');
-      // const myTask = realm.objectForPrimaryKey("Task", 1); // search for a realm object with a primary key that is an int.
       console.log('created two tasks:', tasks);
       const data = tasks.map(post => ({
         user_id: post.user_id,
@@ -95,49 +80,11 @@ const ViewAllUser = ({navigation}) => {
       //  this.setState({ realm });  // set it to state
     });
   }, [delSuccessful]);
-  // realm.write(() => {
-  //   console.log('realm1 writeeeee');
-  //   task1 = realm.create('user_details', {
-  //     user_id: 1,
-  //     user_name: 'Ramesh',
-  //     user_contact: '1111111111',
-  //     user_email: 'abc@ggg.lll',
-  //     user_date: new Date(),
-  //   });
-  //   task2 = realm.create('user_details', {
-  //     user_id: 2,
-  //     user_name: 'Vipul',
-  //     user_contact: '2222222222',
-  //     user_email: 'xyz@ggg.lll',
-  //     // user_date: moment(new Date()).format('L'),
-  //     user_date: new Date(),
-  //   });
-  //   console.log('created two tasks: ${task1.name}', task2.name);
-  // });
   const dateFormatter = date1 => {
     const NewDate = moment(date1).format();
     if (NewDate) return new Date(NewDate).toLocaleDateString();
     else return '';
   };
-  // let realm;
-  // useEffect(() => {
-  //   realm = new Realm({
-  //     path: 'UserDatabase.realm',
-  //     schema: [
-  //       {
-  //         name: 'user_details',
-  //         properties: {
-  //           user_id: {type: 'int', default: 0},
-  //           user_name: 'string',
-  //           user_contact: 'string',
-  //           user_email: 'string',
-  //           user_date: 'date'
-  //         },
-  //       },
-  //     ],
-  //   });
-  //   realm.close()
-  // }, []);
   useFocusEffect(
     React.useCallback(async () => {
       // Do something when the screen is focused
@@ -158,7 +105,6 @@ const ViewAllUser = ({navigation}) => {
         setFlatListItems(data);
         setFlatListItems2(data);
         realm.close();
-        //  this.setState({ realm });  // set it to state
       });
 
       return () => {
@@ -168,90 +114,6 @@ const ViewAllUser = ({navigation}) => {
       };
     }, []),
   );
-  // useFocusEffect(
-  //   React.useCallback(() => {
-  //     // Do something when the screen is focused
-  //     db.transaction(tx => {
-  //       tx.executeSql('SELECT * FROM table_user', [], (tx, results) => {
-  //         var temp = [];
-  //         for (let i = 0; i < results.rows.length; ++i)
-  //           //   console.log("item ------>",results.rows.item(i))
-  //           temp.push(results.rows.item(i));
-  //         setFlatListItems(temp);
-  //         setFlatListItems2(temp);
-  //       });
-  //     });
-
-  //     return () => {
-  //       // Do something when the screen is unfocused
-  //       // Useful for cleanup functions
-  //     };
-  //   }, []),
-  // );
-
-  // React.useEffect(() => {
-  //   const unsubscribe = navigation.addListener('focus', () => {
-  //     // Screen was focused
-  //     // Do something
-  //     db.transaction(tx => {
-  //       tx.executeSql('SELECT * FROM table_user', [], (tx, results) => {
-  //         var temp = [];
-  //         for (let i = 0; i < results.rows.length; ++i)
-  //           //   console.log("item ------>",results.rows.item(i))
-  //           temp.push(results.rows.item(i));
-  //         setFlatListItems(temp);
-  //         setFlatListItems2(temp);
-  //       });
-  //     });
-  //   });
-
-  //   return unsubscribe;
-  // }, [navigation]);
-
-  // useEffect(() => {
-  //   db.transaction(function (txn) {
-  //     txn.executeSql(
-  //       "SELECT name FROM sqlite_master WHERE type='table' AND name='table_user'",
-  //       [],
-  //       function (tx, res) {
-  //         console.log('item:', res.rows.length);
-  //         if (res.rows.length == 0) {
-  //           txn.executeSql('DROP TABLE IF EXISTS table_user', []);
-  //           txn.executeSql(
-  //             'CREATE TABLE IF NOT EXISTS table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name VARCHAR(20), user_contact INT(10), user_email VARCHAR(255),user_date VARCHAR(255))',
-  //             [],
-  //           );
-  //         }
-  //       },
-  //     );
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   db.transaction(tx => {
-  //     tx.executeSql('SELECT * FROM table_user', [], (tx, results) => {
-  //       var temp = [];
-  //       for (let i = 0; i < results.rows.length; ++i)
-  //         //   console.log("item ------>",results.rows.item(i))
-  //         temp.push(results.rows.item(i));
-  //       setFlatListItems(temp);
-  //       setFlatListItems2(temp);
-  //     });
-  //   });
-  // }, [, delSuccessful]);
-
-  //   useEffect(() => {
-  //     console.log("called-------=======''''");
-  //     db.transaction(tx => {
-  //       tx.executeSql('SELECT * FROM table_user', [], (tx, results) => {
-  //         var temp = [];
-  //         for (let i = 0; i < results.rows.length; ++i)
-  //           //   console.log("item ------>",results.rows.item(i))
-  //           temp.push(results.rows.item(i));
-  //         setFlatListItems(temp);
-  //       });
-  //     });
-  //   }, [delSuccessful]);
 
   let listViewItemSeparator = () => {
     return (
@@ -265,33 +127,6 @@ const ViewAllUser = ({navigation}) => {
     );
   };
 
-  // let deleteUser = inputUserId => {
-  //   console.log('==-=-===-=-=-=>>>>>,', inputUserId);
-  //   db.transaction(tx => {
-  //     tx.executeSql(
-  //       'DELETE FROM  table_user where user_id=?',
-  //       [inputUserId],
-  //       (tx, results) => {
-  //         console.log('Results', results.rowsAffected);
-  //         if (results.rowsAffected > 0) {
-  //           Alert.alert(
-  //             'Success',
-  //             'User deleted successfully',
-  //             [
-  //               {
-  //                 text: 'Ok',
-  //                 onPress: () => setDelSuccessful(false),
-  //               },
-  //             ],
-  //             {cancelable: false},
-  //           );
-  //         } else {
-  //           alert('Please insert a valid User Id');
-  //         }
-  //       },
-  //     );
-  //   });
-  // };
   let deleteUser = async inputUserId => {
     await Realm.open({
       // open connection
@@ -322,7 +157,6 @@ const ViewAllUser = ({navigation}) => {
                     // here is realm
                     console.log('realm1', realm);
                     const tasks = realm.objects('user_details');
-                    // const myTask = realm.objectForPrimaryKey("Task", 1); // search for a realm object with a primary key that is an int.
                     console.log('created two tasks:', tasks);
                     const data = tasks.map(post => ({
                       user_id: post.user_id,
@@ -360,7 +194,6 @@ const ViewAllUser = ({navigation}) => {
           borderWidth: 1,
           elevation: 5,
         }}>
-        {/* <Mybutton title="Delete" customClick={() => deleteUser(item.user_id)} /> */}
         <TouchableOpacity
           onPress={() => deleteUser(item.user_id)}
           style={styles.datePikerBtn}>
@@ -407,19 +240,14 @@ const ViewAllUser = ({navigation}) => {
       <StatusBar
         animated={true}
         backgroundColor={'#f4511e'}
-        // barStyle={'dark-content'}
-        // showHideTransition={'fade'}
-        // hidden={hidden}
       />
       <View style={styles.mainView}>
         <Text> </Text>
 
         <Text style={styles.headerText1}>Home Page</Text>
-        {/* <Text>Home Page</Text> */}
         <TouchableOpacity
           onPress={() => navigation.navigate('Register')}
           style={styles.saveDataBtn}>
-          {/* <MaterialCommunityIcons name="home" color={"black"} size={25} /> */}
           <Text
             style={{
               color: 'black',
@@ -460,16 +288,10 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 25,
     textAlign: 'right',
-    // marginTop: 16,
-    // marginLeft: 35,
-    // marginRight: 35,
     textAlignVertical: 'top',
-    // padding: 10,
   },
   mainView: {
-    // flex:1,
     height: 50,
-    // backgroundColor: '#DC6355',
     backgroundColor: '#f4511e',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -479,10 +301,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   saveDataBtn: {
-    // height: 35,
-    // borderWidth: 0.5,
-    // borderRadius: 10,
-    // backgroundColor: '#DC6355',
     backgroundColor: '#f4511e',
     justifyContent: 'center',
     alignItems: 'center',
