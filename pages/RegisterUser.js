@@ -35,7 +35,6 @@ const RegisterUser = ({navigation}) => {
   let [userContact, setUserContact] = useState('');
   //   let [userAddress, setUserAddress] = useState('');
   let [userEmail, setUserEmail] = useState('');
-  //   let [userDob, setUserDob] = useState('');
   const [date, setDate] = React.useState(new Date());
   const [open, setOpen] = React.useState(false);
 
@@ -129,44 +128,9 @@ const RegisterUser = ({navigation}) => {
           {cancelable: false},
         );
       } else alert('Registration Failed');
-      // const tasks = realm.objects('user_details');
-      // const myTask = realm.objectForPrimaryKey("Task", 1); // search for a realm object with a primary key that is an int.
       console.log('created two tasks:', tasks);
-      // const data = tasks.map(post => ({
-      //   user_id: post.user_id,
-      //   user_name: post.user_name,
-      //   user_contact: post.user_contact,
-      //   user_email: post.user_email,
-      //   user_date: dateFormatter(post.user_date),
-      // }));
-      // setFlatListItems(data);
-      // setFlatListItems2(data);
-
       realm.close();
     });
-
-    // db.transaction(function (tx) {
-    //   tx.executeSql(
-    //     'INSERT INTO table_user (user_name, user_contact, user_email, user_date) VALUES (?,?,?,?)',
-    //     [userName, userContact, userEmail,dateFormatter(date)],
-    //     (tx, results) => {
-    //       console.log('Results', results.rowsAffected);
-    //       if (results.rowsAffected > 0) {
-    //         Alert.alert(
-    //           'Success',
-    //           'You are Registered Successfully',
-    //           [
-    //             {
-    //               text: 'Ok',
-    //               onPress: () => navigation.goBack(),
-    //             },
-    //           ],
-    //           {cancelable: false},
-    //         );
-    //       } else alert('Registration Failed');
-    //     },
-    //   );
-    // });
   };
 
   const dateFormatter = date1 => {
@@ -222,15 +186,7 @@ const RegisterUser = ({navigation}) => {
                 onCancel={() => {
                   setOpen(false);
                 }}
-              />
-              {/* <Mytextinput
-                placeholder="Enter Address"
-                onChangeText={userAddress => setUserAddress(userAddress)}
-                maxLength={225}
-                numberOfLines={5}
-                multiline={true}
-                style={{textAlignVertical: 'top', padding: 10}}
-              /> */}
+              />            
               <Mybutton title="Submit" customClick={register_user} />
             </KeyboardAvoidingView>
           </ScrollView>
@@ -261,8 +217,6 @@ export default RegisterUser;
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginHorizontal: 15,
   },
   textView: {
@@ -288,9 +242,6 @@ const styles = StyleSheet.create({
   datePikerBtnTxt: {
     color: '#007FFF',
     fontSize: 17,
-    // marginTop: 16,
-    // marginLeft: 35,
-    // marginRight: 35,
     textAlignVertical: 'top',
     padding: 10,
   },
