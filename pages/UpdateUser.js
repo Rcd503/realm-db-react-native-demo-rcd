@@ -68,57 +68,8 @@ const UpdateUser = ({route, navigation}, props) => {
         },
       );
     });
-  };
-
-  // let updateUser = () => {
-  //   console.log(
-  //     inputUserId,
-  //     userName,
-  //     userContact,
-  //     userEmail,
-  //     dateFormatter(date),
-  //   );
-
-  //   if (!inputUserId) {
-  //     alert('Please fill User id');
-  //     return;
-  //   }
-  //   if (!userName) {
-  //     alert('Please fill name');
-  //     return;
-  //   }
-  //   if (!userContact) {
-  //     alert('Please fill Contact Number');
-  //     return;
-  //   }
-  //   if (!userEmail) {
-  //     alert('Please fill Email');
-  //     return;
-  //   }
-
-  //   db.transaction(tx => {
-  //     tx.executeSql(
-  //       'UPDATE table_user set user_name=?, user_contact=? , user_email=?,user_date=? where user_id=?',
-  //       [userName, userContact, userEmail, dateFormatter(date), inputUserId],
-  //       (tx, results) => {
-  //         console.log('Results', results.rowsAffected);
-  //         if (results.rowsAffected > 0) {
-  //           Alert.alert(
-  //             'Success',
-  //             'User updated successfully',
-  //             [
-  //               {
-  //                 text: 'Ok',
-  //                 onPress: () => navigation.navigate('ViewAll'),
-  //               },
-  //             ],
-  //             {cancelable: false},
-  //           );
-  //         } else alert('Updation Failed');
-  //       },
-  //     );
-  //   });
-  // };
+  }; 
+  
   let updateUser = async () => {
     console.log(
       inputUserId,
@@ -258,8 +209,6 @@ export default UpdateUser;
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginHorizontal: 15,
   },
   textView: {
@@ -285,9 +234,6 @@ const styles = StyleSheet.create({
   datePikerBtnTxt: {
     color: '#007FFF',
     fontSize: 17,
-    // marginTop: 16,
-    // marginLeft: 35,
-    // marginRight: 35,
     textAlignVertical: 'top',
     padding: 10,
   },
