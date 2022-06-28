@@ -122,12 +122,6 @@ const UpdateUser = ({route, navigation}, props) => {
             <KeyboardAvoidingView
               behavior="padding"
               style={{flex: 1, justifyContent: 'space-between'}}>
-              {/* <Mytextinput
-                placeholder="Enter User Id"
-                style={{padding: 10}}
-                onChangeText={inputUserId => setInputUserId(inputUserId)}
-              />
-              <Mybutton title="Search User" customClick={searchUser} /> */}
               <Mytextinput
                 placeholder="Enter Name"
                 value={userName}
@@ -158,7 +152,6 @@ const UpdateUser = ({route, navigation}, props) => {
                   Select Date : {dateFormatter(date)}
                 </Text>
               </TouchableOpacity>
-              {/* <Button title="Open" onPress={() => setOpen(true)} /> */}
               <DatePicker
                 modal
                 mode="date"
@@ -186,8 +179,6 @@ export default UpdateUser;
 const styles = StyleSheet.create({
   containerView: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginHorizontal: 15,
   },
   textView: {
@@ -213,9 +204,6 @@ const styles = StyleSheet.create({
   datePikerBtnTxt: {
     color: '#007FFF',
     fontSize: 17,
-    // marginTop: 16,
-    // marginLeft: 35,
-    // marginRight: 35,
     textAlignVertical: 'top',
     padding: 10,
   },
