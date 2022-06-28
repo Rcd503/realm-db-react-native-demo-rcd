@@ -35,39 +35,11 @@ const HomeScreen = ({ navigation }) => {
             title="Register"
             customClick={() => navigation.navigate('Register')}
           />
-          {/* <Mybutton
-            title="Update"
-            customClick={() => navigation.navigate('Update')}
-          /> */}
-          {/* <Mybutton
-            title="View"
-            customClick={() => navigation.navigate('View')}
-          /> */}
           <Mybutton
             title="View All"
             customClick={() => navigation.navigate('ViewAll')}
           />
-          {/* <Mybutton
-            title="Delete"
-            customClick={() => navigation.navigate('Delete')}
-          /> */}
         </View>
-        {/* <Text
-          style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          Example of SQLite Database in React Native
-        </Text> */}
-        {/* <Text
-          style={{
-            fontSize: 16,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          www.aboutreact.com
-        </Text> */}
       </View>
     </SafeAreaView>
   );
