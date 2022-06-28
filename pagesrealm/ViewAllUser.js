@@ -10,8 +10,6 @@ import {
   StatusBar,
 } from 'react-native';
 import {openDatabase} from 'react-native-sqlite-storage';
-// import HomeHeader from '../src/component/HomeHeader';
-// import Mybutton from './components/Mybutton';
 import Mytextinput from './components/Mytextinput';
 import {useFocusEffect} from '@react-navigation/native';
 
@@ -30,37 +28,15 @@ const ViewAllUser = ({navigation}) => {
         tx.executeSql('SELECT * FROM table_user', [], (tx, results) => {
           var temp = [];
           for (let i = 0; i < results.rows.length; ++i)
-            //   console.log("item ------>",results.rows.item(i))
             temp.push(results.rows.item(i));
           setFlatListItems(temp);
           setFlatListItems2(temp);
         });
       });
 
-      return () => {
-        // Do something when the screen is unfocused
-        // Useful for cleanup functions
-      };
     }, []),
   );
-  // React.useEffect(() => {
-  //   const unsubscribe = navigation.addListener('focus', () => {
-  //     // Screen was focused
-  //     // Do something
-  //     db.transaction(tx => {
-  //       tx.executeSql('SELECT * FROM table_user', [], (tx, results) => {
-  //         var temp = [];
-  //         for (let i = 0; i < results.rows.length; ++i)
-  //           //   console.log("item ------>",results.rows.item(i))
-  //           temp.push(results.rows.item(i));
-  //         setFlatListItems(temp);
-  //         setFlatListItems2(temp);
-  //       });
-  //     });
-  //   });
 
-  //   return unsubscribe;
-  // }, [navigation]);
 
   useEffect(() => {
     db.transaction(function (txn) {
@@ -93,19 +69,6 @@ const ViewAllUser = ({navigation}) => {
       });
     });
   }, [, delSuccessful]);
-
-  //   useEffect(() => {
-  //     console.log("called-------=======''''");
-  //     db.transaction(tx => {
-  //       tx.executeSql('SELECT * FROM table_user', [], (tx, results) => {
-  //         var temp = [];
-  //         for (let i = 0; i < results.rows.length; ++i)
-  //           //   console.log("item ------>",results.rows.item(i))
-  //           temp.push(results.rows.item(i));
-  //         setFlatListItems(temp);
-  //       });
-  //     });
-  //   }, [delSuccessful]);
 
   let listViewItemSeparator = () => {
     return (
@@ -217,7 +180,6 @@ const ViewAllUser = ({navigation}) => {
         <TouchableOpacity
           onPress={() => navigation.navigate('Register')}
           style={styles.saveDataBtn}>
-          {/* <MaterialCommunityIcons name="home" color={"black"} size={25} /> */}
           <Text
             style={{
               color: 'black',
@@ -257,17 +219,11 @@ const styles = StyleSheet.create({
   datePikerBtnTxt: {
     color: 'red',
     fontSize: 25,
-    textAlign: 'right',
-    // marginTop: 16,
-    // marginLeft: 35,
-    // marginRight: 35,
+    textAlign: 'right'
     textAlignVertical: 'top',
-    // padding: 10,
   },
   mainView: {
-    // flex:1,
     height: 50,
-    // backgroundColor: '#DC6355',
     backgroundColor: '#f4511e',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -277,10 +233,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   saveDataBtn: {
-    // height: 35,
-    // borderWidth: 0.5,
-    // borderRadius: 10,
-    // backgroundColor: '#DC6355',
     backgroundColor: '#f4511e',
     justifyContent: 'center',
     alignItems: 'center',
